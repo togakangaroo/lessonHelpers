@@ -49,6 +49,23 @@
     const anagram = str => [...shuffle(str)].join('')
     anagram.help = `Generate an anagram of all characters in a string`
 
+    const showDocs = () => {
+        const docs = Object.entries( window._tulaneJsUiLesson )
+            .map(([fnName, fn]) => {
+                const signature = /^(.*?\))/.exec(fn.toString())[1]
+                return `_tulaneJsUiLesson.${fnName}${signature}\n\t${fn.help}`
+            })
+        console.group(`tulaneJsUiLesson docs`)
+        console.log(`
+Lesson helpers javascript is now loaded, you can find and edit it in the "loessonHelpers.js" file.
+Usage:
+
+${docs.join('\n\n')}
+        `)
+        console.groupEnd()
+    }
+    showDocs.help = `Show documentation including this message`
+
     window._tulaneJsUiLesson = {
         randomColor,
         randomlyChangeColors,
@@ -57,20 +74,8 @@
         runAwayFromMouse,
         shuffle,
         anagram,
+        showDocs,
     }
 
-    const docs = Object.entries( window._tulaneJsUiLesson )
-          .map(([fnName, fn]) => {
-              const signature = /^(.*?\))/.exec(fn.toString())[1]
-              return `_tulaneJsUiLesson.${fnName}${signature}\n\t${fn.help}`
-          })
-    console.group(`tulaneJsUiLesson docs`)
-    console.log(`
-Lesson helpers javascript is now loaded, you can find and edit it in the "loessonHelpers.js" file.
-Usage:
-
-${docs.join('\n\n')}
-    `)
-    console.groupEnd()
-
+    showDocs()
 }
