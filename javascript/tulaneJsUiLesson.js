@@ -57,7 +57,7 @@
             })
         console.group(`tulaneJsUiLesson docs`)
         console.log(`
-Lesson helpers javascript is now loaded, you can find and edit it in the "loessonHelpers.js" file.
+Lesson helpers javascript is now loaded, you can find and edit it in the "lessonHelpers.js" file.
 Usage:
 
 ${docs.join('\n\n')}
